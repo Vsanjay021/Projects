@@ -1,0 +1,46 @@
+import { FaCreditCard, FaBook, FaBriefcase } from 'react-icons/fa';
+import React, { ReactNode } from 'react';
+
+
+
+export type LinkType = {
+    label: string,
+    icon: ReactNode,
+    url: string
+}
+
+export type SublinkType = {
+    page: string,
+    links: LinkType[]
+}
+
+
+
+const sublinks: SublinkType[] = [
+    {
+        page: 'products',
+        links: [
+            { label: 'payment', icon: <FaCreditCard />, url: '/products' },
+            { label: 'terminal', icon: <FaCreditCard />, url: '/products' },
+            { label: 'connect', icon: <FaCreditCard />, url: '/products' },
+        ],
+    },
+    {
+        page: 'developers',
+        links: [
+            { label: 'plugins', icon: <FaBook />, url: '/products' },
+            { label: 'libraries', icon: <FaBook />, url: '/products' },
+            { label: 'help', icon: <FaBook />, url: '/products' },
+            { label: 'billing', icon: <FaBook />, url: '/products' },
+        ],
+    },
+    {
+        page: 'company',
+        links: [
+            { label: 'about', icon: <FaBriefcase />, url: '/products' },
+            { label: 'customers', icon: <FaBriefcase />, url: '/products' },
+        ],
+    },
+];
+
+export default sublinks;
