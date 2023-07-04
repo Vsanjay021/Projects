@@ -5,7 +5,7 @@ export type BirthdayDataType={
     image:string
 }
 
-export let birthdayData:BirthdayDataType[]=[
+export  let birthdayData:BirthdayDataType[]=[
     {
         id: 1,
         name: 'Bertie Yates',

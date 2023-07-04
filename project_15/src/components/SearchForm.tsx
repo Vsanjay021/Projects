@@ -1,35 +1,37 @@
-import React from 'react'
-import { useGlobalContext } from '../context'
-export default function SearchForm() {
-  const { setSearchTerm } = useGlobalContext()
-  const searchValueRef = React.useRef<HTMLInputElement>(null);
+import React, {useEffect,ReactNode} from 'react';
+import { useGlobalContext } from "../context";
 
-  React.useEffect(() => {
-    if (searchValueRef.current) {
-      searchValueRef.current.focus();
+export type searchValueType = React.RefObject<HTMLInputElement>;
+
+
+const SearchForm: React.FC = () => {
+    const { setSearchTerm } = useGlobalContext();
+    const searchValue : searchValueType = React.useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        searchValue!.current!.focus()
+    }, [])
+
+    const searchCocktail = () => {
+        console.log(searchValue!.current!.value);
+        
+        setSearchTerm(searchValue!.current!.value);
     }
-  }, []);
 
-  function searchCocktail() {
-    setSearchTerm(searchValue.current.value)
-  }
-  function handleSubmit(e:React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-  }
-  return (
-    <section className='section search'>
-      <form className='search-form' onSubmit={handleSubmit}>
-        <div className='form-control'>
-          <label htmlFor='name'>search your favorite cocktail</label>
-          <input
-            type='text'
-            name='name'
-            id='name'
-            ref={searchValue}
-            onChange={searchCocktail}
-          />
-        </div>
-      </form>
-    </section>
-  )
+    const handleSubmit = (e : React.FormEvent) => {
+        e.preventDefault();
+    }
+
+    return (
+        <section className='section search'>
+            <form className='search-form' onSubmit={handleSubmit}>
+                <div className="form-control">
+                    <label htmlFor="name">Search Your favorite cocktail</label>
+                    <input type="text" id='name' ref={searchValue} onChange={searchCocktail}/>
+                </div>
+            </form>
+        </section>
+    )
 }
+
+export default SearchForm

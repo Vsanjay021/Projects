@@ -1,12 +1,12 @@
-
+// import React from "react"
+import {useState} from 'react';
 import './App.css'
 import { List } from './List';
-import { birthdayData } from './data';
-import { BirthdayDataType } from './data';
-import React from "react"
+import { birthdayData ,BirthdayDataType} from './data';
 
 function App() {
-  const [people,setPeople]=React.useState<BirthdayDataType[]>(birthdayData)
+  const [people,setPeople] = useState<BirthdayDataType[]>(birthdayData);
+
   return (
    <main>
     <section className='container' >

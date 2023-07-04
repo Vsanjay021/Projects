@@ -1,11 +1,8 @@
-import React from 'react'
 
-const Loading = () => {
- return (
-  <div className="loader">
-    Loading...
-  </div>
- )
+const Loading : React.FC = () => {
+  return (
+      <div className="loader"></div>
+  )
 }
 
 export default Loading
