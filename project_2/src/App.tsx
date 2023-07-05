@@ -1,4 +1,4 @@
-import React ,{useState,useEffect} from "react"
+import {useState,useEffect} from "react"
 import axios from 'axios'
 import './App.css'
 import { Loading } from "./Loading"
@@ -15,13 +15,14 @@ function App() {
 
 
  const URL = "https://course-api.com/react-tours-project"
-  const [loading, setLoading] = React.useState(true);
-  const [tours, setTours] = React.useState([] as TourType[]);
+  const [loading, setLoading] = useState(true);
+  const [tours, setTours] = useState([] as TourType[]);
 
-  const fetchTours = async (): Promise<TourType[]> => {
+  const fetchTours = async () => {
       let response=await axios.get(URL);
+      let Data=await response.data;
+      setTours(Data)
       setLoading(false);
-      return response.data;
   }
 
   const removeTour=(id:string)=>{
@@ -30,9 +31,8 @@ function App() {
   }
 
   useEffect(()=>{
-    fetchTours().then((data:TourType[])=>{
-      setTours(data)
-    })
+    fetchTours()
+    
   },[])
 
   if(loading){

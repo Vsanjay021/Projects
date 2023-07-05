@@ -11,7 +11,7 @@ describe("List component", () => {
     console.log(articleElement.length);
     expect(articleElement.length).toBe(mockPeople.length);
 
-    mockPeople.forEach((person, index) => {
+    mockPeople.forEach((person, index) => {                   
       const { name, age, image } = person;
 
       expect(articleElement[index]).toContainHTML(
